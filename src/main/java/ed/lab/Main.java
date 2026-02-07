@@ -1,11 +1,31 @@
 package ed.lab;
 
 public class Main {
-    private static final ArrayGenerator<Integer> sortedArrayGenerator = null; // Reemplácelo por una función lambda
+    private static final ArrayGenerator<Integer> sortedArrayGenerator = ( n) -> {
+        Integer[] lista = new Integer[n];
+        for (Integer i=0; i<n;i++){
+            lista[i]=i;
+        }
+        return lista;
+    };
 
-    private static final ArrayGenerator<Integer> invertedArrayGenerator = null; // Reemplácelo por una función lambda
+    private static final ArrayGenerator<Integer> invertedArrayGenerator = ( n) -> {
+        Integer[] lista = new Integer[n];
+        Integer x = n;
+        for (Integer i=0;i<n;i++){
+            lista[i]=x;
+            x--;
+        }
+        return lista;
+    };
 
-    private static final ArrayGenerator<Integer> randomArrayGenerator = null; // Reemplácelo por una función lambda
+    private static final ArrayGenerator<Integer> randomArrayGenerator = ( n) -> {
+        Integer[] lista = new Integer[n];
+        for (Integer i=0; i<n; i++){
+            lista[i]=(int)(Math.random()*n);
+        }
+        return lista;
+    };
 
     private static final QuickSort<Integer> highPivotQuickSort = null; // Reemplácelo por una referencia a un método
 
@@ -42,7 +62,20 @@ public class Main {
 
         System.out.println("Ordenando un arreglo ordenado:");
         System.out.println("\tUtilizando el último elemento como pivote: ");
-        tester.testSorting(sortedArrayGenerator, highPivotQuickSort);
+        /* Pruebas unitarias de las implementaciones de ArrayGenerator
+        Integer[] l1 = invertedArrayGenerator.generate(6);
+        Integer[] l2 = randomArrayGenerator.generate(6);
+        Integer[] l3 = sortedArrayGenerator.generate(6);
+        for (int x:l1){
+            System.out.println(x);
+        }
+        for (int x:l2){
+            System.out.println(x);
+        }
+        for (int x:l3){
+            System.out.println(x);
+        }*/
+       tester.testSorting(sortedArrayGenerator, highPivotQuickSort);
         System.out.println("\tUtilizando el primer elemento como pivote: ");
         tester.testSorting(sortedArrayGenerator, lowPivotQuickSort);
         System.out.println("\tUtilizando un elemento aleatorio como pivote: ");
